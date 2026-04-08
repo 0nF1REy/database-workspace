@@ -74,3 +74,6 @@ Desktop.ini
 # Database backup artifacts
 # ================================
 database_query_languages/sql/06_shinsengumi/backup/*.sql
+*all_ddl.sql
+*all_dml.sql
+*full_database.sql
