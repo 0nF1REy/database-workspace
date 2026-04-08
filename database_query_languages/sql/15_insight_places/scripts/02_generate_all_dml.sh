@@ -1,28 +1,22 @@
 #!/bin/bash
-# ===============================================
-# Script: generate_all_dml.sh
-# Descrição: Gera um arquivo único contendo todos
-# arquivos SQL de INSERT (DML) na ordem numérica.
-# ===============================================
+# Script para gerar all_dml.sql (todos os inserts)
 
-OUTPUT="all_dml.sql"
+SCRIPT_DIR=$(dirname "$0")
+ROOT_DIR="$SCRIPT_DIR/.."
+OUTPUT="$ROOT_DIR/all_dml.sql"
 
-# Limpa o arquivo anterior
 > "$OUTPUT"
 
-echo "Generating $OUTPUT ..."
-
-# Procura arquivos .sql contendo INSERT (case-insensitive), ordena por nome
-for file in $(grep -il "insert" *.sql | sort); do
-    echo "-- ====================================== --" >> "$OUTPUT"
-    echo "-- START FILE: $file --" >> "$OUTPUT"
-    echo "-- ====================================== --" >> "$OUTPUT"
-    cat "$file" >> "$OUTPUT"
-    echo "" >> "$OUTPUT"
-    echo "-- ====================================== --" >> "$OUTPUT"
-    echo "-- END FILE: $file --" >> "$OUTPUT"
-    echo "-- ====================================== --" >> "$OUTPUT"
-    echo "" >> "$OUTPUT"
+for file in 04_insert_proprietarios.sql \
+            05_insert_clientes.sql \
+            06_insert_enderecos.sql \
+            07_insert_hospedagens.sql \
+            08_insert_alugueis.sql \
+            09_insert_avaliacoes.sql
+do
+    echo "Adicionando $file..."
+    cat "$ROOT_DIR/$file" >> "$OUTPUT"
+    echo -e "\n-- ====================================== --\n" >> "$OUTPUT"
 done
 
 echo "Done! All DML scripts combined into $OUTPUT"
