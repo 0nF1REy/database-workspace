@@ -1,18 +1,18 @@
-CREATE TABLE proprietarios (
+CREATE TABLE IF NOT EXISTS proprietarios (
     proprietario_id VARCHAR(255) PRIMARY KEY,
     nome VARCHAR(255),
     cpf_cnpj VARCHAR(20),
     contato VARCHAR(255)
 );
 
-CREATE TABLE clientes (
+CREATE TABLE IF NOT EXISTS clientes (
     cliente_id VARCHAR(255) PRIMARY KEY,
     nome VARCHAR(255),
     cpf VARCHAR(14),
     contato VARCHAR(255)
 );
 
-CREATE TABLE enderecos (
+CREATE TABLE IF NOT EXISTS enderecos (
     endereco_id VARCHAR(255) PRIMARY KEY,
     rua VARCHAR(255),
     numero INT,

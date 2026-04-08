@@ -1,4 +1,4 @@
-CREATE TABLE hospedagens (
+CREATE TABLE IF NOT EXISTS hospedagens (
     hospedagem_id VARCHAR(255) PRIMARY KEY,
     tipo VARCHAR(50),
     endereco_id VARCHAR(255),
@@ -8,7 +8,7 @@ CREATE TABLE hospedagens (
     FOREIGN KEY (proprietario_id) REFERENCES proprietarios (proprietario_id)
 );
 
-CREATE TABLE alugueis (
+CREATE TABLE IF NOT EXISTS alugueis (
     aluguel_id VARCHAR(255) PRIMARY KEY,
     cliente_id VARCHAR(255),
     hospedagem_id VARCHAR(255),
@@ -19,7 +19,7 @@ CREATE TABLE alugueis (
     FOREIGN KEY (hospedagem_id) REFERENCES hospedagens (hospedagem_id)
 );
 
-CREATE TABLE avaliacoes (
+CREATE TABLE IF NOT EXISTS avaliacoes (
     avaliacao_id VARCHAR(255) PRIMARY KEY,
     cliente_id VARCHAR(255),
     hospedagem_id VARCHAR(255),
