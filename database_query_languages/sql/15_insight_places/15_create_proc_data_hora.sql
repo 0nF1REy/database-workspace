@@ -1,0 +1,13 @@
+DROP PROCEDURE IF EXISTS dataHora;
+
+DELIMITER $$
+
+CREATE PROCEDURE dataHora()
+BEGIN
+  DECLARE ts DATETIME DEFAULT localtimestamp();
+  SELECT ts AS 'Data atual';
+END$$
+
+DELIMITER ;
+
+CALL dataHora ();
